@@ -1,0 +1,44 @@
+<h2>Tabla articulos</h2>
+<hr>
+<br>
+<table class="table">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Descripción</th>
+        <th scope="col">Fabricante</th>
+        <!-- <th scope="col">Peso</th>
+        <th scope="col">Alto</th>
+        <th scope="col">Largo</th>
+        <th scope="col">Ancho</th>
+        <th scope="col">Precio</th> -->
+        <th scope="col">Imagen</th>
+        <th scope="col-2">Gestión</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let article of gestionArticuloService.list">
+        <th scope="row">{{article.ID_Articulo}}</th>
+        <td>{{article.Nombre}}</td>
+        <td>{{article.Stock}}</td>
+        <td>{{article.Descripcion}}</td>
+        <td>{{article.Fabricante}}</td>
+        <!-- <td>{{article.Peso}}</td>
+        <td>{{article.Alto}}</td>
+        <td>{{article.Largo}}</td>
+        <td>{{article.Ancho}}</td>
+        <td>{{article.Precio}}</td> -->
+        <td><img src="{{article.Imagen}}" height="150px" width="200px"></td>
+        <td>
+            <button style="margin: 10px;" class="btn btn-success" (click)="editar(article)" ><i class="fas fa-edit"></i></button>
+            <button style="margin: 10px;" class="btn btn-danger" (click)="delArt(article.ID_Articulo)"><i class="fas fa-trash-alt"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="text-center" *ngIf="resultado">
+    Resultado: {{resultado.Mensaje}}
+  </div>

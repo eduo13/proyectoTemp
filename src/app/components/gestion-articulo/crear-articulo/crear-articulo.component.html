@@ -1,0 +1,79 @@
+<h2>Añadir / Actualizar Articulo</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="forma"  (ngSubmit)="crear()">
+
+            <!--Nombre-->
+            <div class="form-group">
+                <label><b style="color: red;">*</b> Nombre</label>
+                <input type="text" class="form-control" formControlName="nombre" placeholder="Nombre" [class.is-invalid]="nombreNoValido">
+            </div>
+            
+            <!--Stock inicial-->
+            <div class="form-group">
+                <label>Stock</label>
+                <input type="number" class="form-control" formControlName="stock" placeholder="Stock inicial">
+                <small>Si se esta editando un articulo el stock introducido se sumará al que ya tenía, o restar en caso de que el valor sea negativo</small>
+            </div>
+
+            <!--Descripción-->
+            <div class="form-group">
+                <label>Descripción</label>
+                <input type="text" class="form-control" formControlName="descripcion" placeholder="Descripcion">
+            </div>
+
+            <!--Fabricante-->
+            <div class="form-group">
+                <label><b style="color: red;">*</b> Fabricante</label>
+                <input type="text" class="form-control" formControlName="fabricante" placeholder="Fabricante" [class.is-invalid]="fabricanteNoValido">
+            </div>
+
+            <!--Peso-->
+            <div class="form-group">
+                <label><b style="color: red;">*</b> Peso</label>
+                <input type="text" class="form-control" formControlName="peso" placeholder="Peso" [class.is-invalid]="pesoNoValido">
+            </div>
+
+            <!--Alto-->
+            <div class="form-group">
+                <label>Alto</label>
+                <input type="text" class="form-control" formControlName="alto" placeholder="Alto">
+            </div>
+
+            <!--Largo-->
+            <div class="form-group">
+                <label>Largo</label>
+                <input type="text" class="form-control" formControlName="largo" placeholder="Largo">
+            </div>
+
+            <!--Ancho-->
+            <div class="form-group">
+                <label>Ancho</label>
+                <input type="text" class="form-control" formControlName="ancho" placeholder="Ancho">
+            </div>
+
+            <!--Precio-->
+            <div class="form-group">
+                <label><b style="color: red;">*</b> Precio</label>
+                <input type="text" class="form-control" formControlName="precio" placeholder="Precio" [class.is-invalid]="precioNoValido">
+            </div>
+
+            <image-upload (uploadFinished)="onUploadFinished($event)"></image-upload>
+            
+            <hr>
+            <br>
+            <div class="form-group text-center">
+                <button type="submit"
+                        class="btn btn-warning w-25">
+                    <i class="fas fa-user-plus"></i>
+                    Aceptar                  
+                </button>
+            </div>
+        </form>
+        <div class="text-center" *ngIf="resultado">
+            Resultado: {{resultado.Mensaje}}
+        </div>
+    </div>
+</div>

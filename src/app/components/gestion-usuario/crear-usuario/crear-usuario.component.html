@@ -1,0 +1,65 @@
+<h2>Añadir / Actualizar Usuario</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <form autocomplete="off" [formGroup]="forma" (ngSubmit)="crear()">
+
+            <!--Usuario-->
+            <div class="form-group">
+                <label>Usuario</label>
+                <input type="text" class="form-control" formControlName="usuario" placeholder="Usuario" [class.is-invalid]="usuarioNoValido">
+                <small *ngIf="usuarioNoValido" class="text-danger">El usuario ha de tener minimo 4 carácteres</small>
+            </div>
+
+            <!--ID Perfil-->
+            <div class="form-group">
+                <label>Perfil</label>
+                <select class="form-control" formControlName="perfil" id="id_perfil" [class.is-invalid]="perfilNoValido">
+                  <option value="0" disabled>Selecciona un tipo de perfil</option>
+                  <option value="1">Administrador</option>
+                  <option value="2">Operador</option>
+                  <option value="3">Gestor</option>
+                </select>
+                <small *ngIf="perfilNoValido" class="text-danger">Se ha de seleccionar un tipo de usuario</small>
+            </div>
+
+            <!--Email-->
+            <div class="form-group">
+                <label>E-mail</label>
+                <input type="text" class="form-control" formControlName="email" placeholder="Correo electrónico" [class.is-invalid]="emailNoValido">
+                <small *ngIf="emailNoValido" class="text-danger">El correo ha de cumplir el patrón</small>
+            </div>
+
+            <!--Password-->
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input type="password" class="form-control" formControlName="pass1" placeholder="Contraseña" [class.is-invalid]="pass1NoValido">
+                <small *ngIf="pass1NoValido" class="text-danger">La contraseña ha de tener minimo 4 carácteres</small>
+            </div>
+
+            <!--Password2-->
+            <div class="form-group">
+                <label>Repetir Contraseña</label>
+                <input type="password" class="form-control" formControlName="pass2" placeholder="Repetir Contraseña" [class.is-invalid]="pass2NoValido">
+                <small *ngIf="pass2NoValido" class="text-danger">La contraseña ha de ser igual a la introducida</small>
+            </div>
+
+            <!--Perfil-->
+            <div class="form-group">
+                <input type="hide" value="" class="form-control" formControlName="perfil">
+            </div>
+            <hr>
+            <br>
+            <div class="form-group text-center">
+                <button type="submit" class="btn btn-warning w-25">
+                    <i class="fas fa-user-plus"></i>
+                    Aceptar
+                </button>
+            </div>
+        </form>
+        <div class="text-center" *ngIf="resultado">
+            Resultado: {{resultado.Mensaje}}
+        </div>
+    </div>
+</div>

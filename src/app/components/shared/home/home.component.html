@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="text-center" *ngIf="user">
+        <h3>Home</h3>
+        <hr>
+        <p>Bienvenido {{user.Email}}</p>
+    </div>
+    <div *ngIf="admin">
+        <a href="gestionUsuario">gestion de usuarios</a>
+    </div>
+</div>

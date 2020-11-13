@@ -1,0 +1,24 @@
+
+<h1 style="text-align: center; margin-top: 30px;">Listado de todos los articulos del almacén</h1>
+<hr>
+<br>
+<div class="card-columns  animate__animated animate__fadeIn">
+    <div *ngFor="let article of gestionArticuloService.list" class="card bg-dark border-white" style="width: 18rem; margin-bottom: 50px;">
+        <div class="ribbon ribbon-top-right"><span>{{article.Precio}} €</span></div>
+        <img src="{{article.Imagen}}" class="card-img-top">
+        <div class="card-body">
+            <h4 class="card-title" style="display: inline;"><b>ID: {{article.ID_Articulo}}</b></h4>
+            <b *ngIf="article.Stock != 0; else outofstock" style="padding-left: 100px; display: inline;">Stock: {{article.Stock}}</b>
+            <ng-template #outofstock><b style="padding-left: 100px; display: inline;">No hay Stock</b></ng-template>
+            <h4 class="card-title" style="padding-top: 20px;"><b>Nombre: </b>{{article.Nombre}}</h4>
+            <p class="card-text"><b>Descripción: </b>{{article.Descripcion}}</p>
+            <p class="card-text"><b>Fabricante: </b>{{article.Fabricante}}</p>
+        </div>
+            <ul class="list-group list-group-flush">
+            <li class="list-group-item bg-dark"><b>Peso: </b>{{article.Peso}} kg</li>
+            <li class="list-group-item bg-dark"><b>Alto: </b>{{article.Alto}} m</li>
+            <li class="list-group-item bg-dark"><b>Largo: </b>{{article.Largo}} m</li>
+            <li class="list-group-item bg-dark"><b>Ancho: </b>{{article.Ancho}} m</li>
+        </ul>
+    </div>
+</div>

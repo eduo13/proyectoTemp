@@ -1,0 +1,19 @@
+footer{
+    color: rgba(0, 0, 0, 0.7);
+    font-weight: 900;
+    bottom: 0px;
+    background-color: rgb(255, 120, 0);
+    width: 100%;
+}
+
+hr{
+    background-color: white;
+}
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+  
+  
+.main-container{
+    margin-top: 20px;
+}
