@@ -6,9 +6,8 @@ import { environment } from './../environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { EffectsModule } from '@ngrx/effects';
 
 //@ngrx
 //import { reducers } from './components/login/redux/store/app.states';
@@ -31,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AuthServiceCanloadGuard } from './services/auth-service-canload.guard';
 import { AuthServiceCanActivateGuard } from './services/auth-service-canactivate.guard';
+import { TokenInterceptor } from './services/token.interceptor';
 
 
 
@@ -48,10 +48,7 @@ import { AuthServiceCanActivateGuard } from './services/auth-service-canactivate
     ReactiveFormsModule,
     CommonModule,
     APP_ROUTING,
-    //EffectsModule.forRoot([LoginEffects]),
     StoreModule.forRoot(appReducers, {metaReducers}),
-    //StoreModule.forRoot(reducers, {}),
-    //StoreModule.forRoot(appReducers, {metaReducers}),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
@@ -64,7 +61,11 @@ import { AuthServiceCanActivateGuard } from './services/auth-service-canactivate
     MatIconModule,
     MatListModule,
   ],
-  providers: [ AuthServiceCanloadGuard, AuthServiceCanActivateGuard ],
+  providers: [
+              { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
+              AuthServiceCanloadGuard,
+              AuthServiceCanActivateGuard,
+              ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,8 +11,6 @@ export class AppComponent {
 
 
   constructor(){
-      // localStorage.setItem('token', null);
-      // localStorage.setItem('email', null);
   }
 
 }

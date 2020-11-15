@@ -12,12 +12,12 @@ export class HomeComponent implements OnInit {
   admin = false;
 
   constructor(private authservice: AuthService) {
-    this.authservice.user.subscribe(user => {
-      this.user = user;
-      if(this.user){
-        this.admin = (user.id_perfil === 1) ? true : false;
-      }
-    })
+      this.user = JSON.parse(localStorage.getItem('currentUser'));
+    //this.authservice.user.subscribe(user => {
+//      if(this.user){
+        this.admin = (this.user.IdPerfil === 1) ? true : false;
+//      }
+//    })
   }
 
   ngOnInit(): void {

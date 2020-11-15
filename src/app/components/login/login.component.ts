@@ -17,9 +17,9 @@ export class LoginComponent implements OnInit {
 
   formulario: FormGroup;
   resultado: string;
-  user: DatosLogin;
+  //user: DatosLogin;
   getState: Observable<any>;
-  isAuthenticated: boolean = false;
+  //isAuthenticated: boolean = false;
   errorMessage: string | null;
 
   constructor(
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     private store: Store<AppState>,
     private router: Router
     ) {
-    this.getState = this.store.select(selectLoginState);
+    //this.getState = this.store.select(selectLoginState);
     this.formulario = this.formbuilder.group({
       email: ['',Validators.required],
       password: ['',Validators.required],
@@ -36,10 +36,10 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getState.subscribe((state) => {
+/*     this.getState.subscribe((state) => {
       this.isAuthenticated = state.isAuthenticated;
       this.user = state.user;
-    });
+    }); */
   }
 
   login(){

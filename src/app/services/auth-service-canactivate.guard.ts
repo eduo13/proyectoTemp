@@ -1,20 +1,16 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
-import { AuthService } from './auth.service';
 
 
 @Injectable()
 export class AuthServiceCanActivateGuard implements CanActivate {
 
   constructor(
-    private router: Router,
-    private authService: AuthService
-  ){}
+    private router: Router  ){}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     var user = JSON.parse(localStorage.getItem('currentUser'));
     if (user && user.Token != null) {
-      //var user = JSON.parse(localStorage.getItem('currentUser'));
       console.log("comprobando admin..");
       if (route.data.perfiles && route.data.perfiles.indexOf(user.IdPerfil) === -1) {
         console.log("no tiene permiso canActivate");

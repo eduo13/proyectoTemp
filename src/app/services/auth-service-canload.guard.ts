@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { CanLoad, Route, Router } from '@angular/router';
-import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +7,8 @@ import { AuthService } from './auth.service';
 export class AuthServiceCanloadGuard implements CanLoad {
 
   constructor(
-    private router: Router,
-    private authService: AuthService
-  ){}
+    private router: Router  ){}
+
   canLoad(route: Route ){
       var user = JSON.parse(localStorage.getItem('currentUser'));
       if (user && user.Token != null) {

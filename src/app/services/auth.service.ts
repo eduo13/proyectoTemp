@@ -25,20 +25,6 @@ export class AuthService {
     this.user = this.userSubject.asObservable();
   }
 
-/*   public get userValue(): DatosLogin {
-    return this.userSubject.value;
-  } */
-
-/*   getToken(): string {
-    var ls = JSON.parse(localStorage.getItem('currentUser'));
-    console.log("token = " + ls.Token);
-    return ls.Token;
-  }
-
-  isLoggedIn() {
-    const token = this.getToken();
-    return token != null;
-  } */
 
     comprobarLogin(datoslogin: DatosLogin): Observable<any> {
     const url = `${environment.apiUrl}/api/usuario/loginPOST`;

@@ -159,12 +159,6 @@ export class CrearUsuarioComponent implements OnInit, OnDestroy {
 
   agregar(userData: UserModel){
     console.log("userdata = " + userData);
-/*     console.log("userData.Id_perfil = "+ userData.Id_Perfil + " y userData.Perfil = " + userData.Perfil);
-    if(userData.Id_Perfil == 1){userData.Perfil = "Administrador";}
-    if(userData.Id_Perfil == 2){userData.Perfil = "Gestor";}
-    if(userData.Id_Perfil == 3){userData.Perfil = "Operador";}
-        console.log("userData.Id_perfil = "+ userData.Id_Perfil + " y userData.Perfil = " + userData.Perfil); */
-    //Llamamos al servicio que agrega el usuario, pasandole
      this.gestionUsuarioService.crearUsuario(userData).subscribe(data => {
       this.resultado = data;
       if(data['Email'] != null){
@@ -176,20 +170,13 @@ export class CrearUsuarioComponent implements OnInit, OnDestroy {
   }
 
   editar(userData: UserModel){
-    //console.log("userData.Id_perfil = "+ userData.Id_Perfil + " y userData.Perfil = " + userData.Perfil);
-    //esto hay que cambiarlo
-/*     if(userData.Id_Perfil == 1){userData.Perfil = "Administrador";}
-    if(userData.Id_Perfil == 2){userData.Perfil = "Gestor";}
-    if(userData.Id_Perfil == 3){userData.Perfil = "Operador";} */
 
      userData.ID_Usuario = this.idUsuario;
-    //console.log("userData.Id_perfil = "+ userData.Id_Perfil + " y userData.Perfil = " + userData.Perfil);
       this.gestionUsuarioService.actualizarUser(userData).subscribe(data =>{
       this.resultado = data;
       this.store.dispatch(EDITAR({
         id_usuario: this.upUser.ID_Usuario,
         id_perfil: userData.Id_Perfil,
-//        perfil: userData.Perfil,
         usuario: userData.Usuario,
         email: userData.Email}));
       this.gestionUsuarioService.getUsersList();
